@@ -227,7 +227,7 @@ const sendEmail = async (email, code, username) => {
     detailValue: username,
     detailSub: email,
     code,
-    noteTitle: "🔒 Security Tips",
+    noteTitle: "Security Tips",
     noteItems: [
       "Never share this code with anyone",
       "Cine Verse staff will never ask for this code",
@@ -260,7 +260,7 @@ const sendForgotPasswordEmail = async (email, code, username) => {
     detailValue: username,
     detailSub: email,
     code,
-    noteTitle: "⚠️ Didn't request this?",
+    noteTitle: "Didn't request this?",
     noteItems: [
       "Never share this code with anyone",
       "Cine Verse will never ask for your password",
@@ -294,7 +294,7 @@ const sendAdminEmail = async (email, code, username, role) => {
     detailSub: email,
     badge: `Requested as ${role}`,
     code,
-    noteTitle: "🔒 Security Tips",
+    noteTitle: "Security Tips",
     noteItems: [
       "Never share this code with anyone",
       "Cine Verse staff will never ask for this code",
@@ -328,7 +328,7 @@ const changeEmail = async (email, code, username) => {
     detailValue: email,
     detailSub: "This will become your sign-in email",
     code,
-    noteTitle: "⚠️ Didn't request this?",
+    noteTitle: "Didn't request this?",
     noteItems: [
       "Never share this code with anyone",
       "Cine Verse staff will never ask for this code",
@@ -377,7 +377,7 @@ const sendSupportEmail = async (user, text) => {
     detailValue: clean(user.userName),
     detailSub: clean(user.email),
     message: clean(text),
-    noteTitle: "📌 Next steps",
+    noteTitle: "Next steps",
     noteItems: [
       "Reply to this email to answer the user directly",
       "Or reply from the admin Support tab in the app",
@@ -402,7 +402,7 @@ const sendSupportReceipt = async (user, text) => {
     detailValue: clean(user.userName),
     detailSub: clean(user.email),
     message: clean(text),
-    noteTitle: "🔒 Good to know",
+    noteTitle: "Good to know",
     noteItems: [
       "Cine Verse will never ask for your password",
       "Keep your ticket codes private",
@@ -426,7 +426,7 @@ const sendSupportReply = async (user, question, reply) => {
     detailValue: clean(user.userName),
     detailSub: clean(user.email),
     message: clean(reply),
-    noteTitle: "💬 Need more help?",
+    noteTitle: "Need more help?",
     noteItems: ["Reply to this email or send another message from the app"],
   });
   return trySend({

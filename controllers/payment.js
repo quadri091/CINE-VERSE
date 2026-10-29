@@ -162,7 +162,7 @@ const verifyPayment = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Payment successful 🎉",
+      message: "Payment successful",
       data: {
         tickets: await myTickets(req.user._id),
         cart: await validCart(await usermodel.findById(req.user._id)),

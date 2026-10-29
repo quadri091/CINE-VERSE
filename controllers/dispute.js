@@ -324,7 +324,7 @@ const updateStatus = async (req, res) => {
     await notify(req.app.get("io"), dispute.raisedBy.id, {
       title:
         status === "Resolved"
-          ? "Your dispute was resolved ✅"
+          ? "Your dispute was resolved"
           : status === "Rejected"
             ? "Update on your dispute"
             : "Your dispute is being reviewed",

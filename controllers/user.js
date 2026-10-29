@@ -12,7 +12,7 @@ const getMe = async (req, res) => {
 };
 
 const updateProfile = async (req, res) => {
-  const { userName, number, bio, age, image } = req.body;
+  const { userName, bio, age, image } = req.body;
   try {
     const user = req.user;
 
@@ -23,16 +23,6 @@ const updateProfile = async (req, res) => {
           .json({ success: false, message: "Name can't be empty" });
       }
       user.userName = userName.trim();
-    }
-
-    if (number !== undefined) {
-      const digits = String(number).replace(/[^0-9]/g, "");
-      if (digits && (digits.length < 7 || digits.length > 15)) {
-        return res
-          .status(400)
-          .json({ success: false, message: "Enter a valid phone number" });
-      }
-      user.number = digits;
     }
 
     if (bio !== undefined) user.bio = String(bio).trim().slice(0, 300);
@@ -75,6 +65,13 @@ const changePassword = async (req, res) => {
   }
   try {
     const user = req.user;
+
+    if (user.googleSub || !user.password) {
+      return res.status(400).json({
+        success: false,
+        message: "This account signs in with Google, so it has no password",
+      });
+    }
 
     if (user.password) {
       const isMatch = await bcrypt.compare(oldPassword || "", user.password);

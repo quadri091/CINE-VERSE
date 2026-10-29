@@ -18,10 +18,11 @@ const getResetCode = async (req, res) => {
     if (!user) {
       return res.status(404).json({ success: false, message: "User not found" });
     }
-    if (!user.password) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Please Sign In with Google." });
+    if (user.googleSub || !user.password) {
+      return res.status(400).json({
+        success: false,
+        message: "This account signs in with Google. Use Continue with Google",
+      });
     }
 
     const code = generateCode();

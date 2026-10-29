@@ -195,7 +195,7 @@ const uploadVideo = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Video uploaded",
-      data: { url, duration: Math.round(duration) },
+      data: { url, duration },
     });
   } catch (error) {
     console.log("Video upload failed:", error.message);

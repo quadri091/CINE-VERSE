@@ -12,7 +12,7 @@ const publicUser = require("../utils/public-user.js");
 const generateOTP = require("otp-generator");
 const CLIENT_ID = process.env.googleClientId;
 
-const TOKEN_LIFE = 60 * 60 * 24 * 7;
+const TOKEN_LIFE = 60 * 60 * 24;
 
 const signupInfo = (user) => ({
   ...publicUser(user),

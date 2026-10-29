@@ -47,15 +47,16 @@ Every response is `{ success, message, data }`.
 - `POST /get-mail-changed-code/:newEmail` · `POST /verify-user-email/:oldEmail { email, otp }`
 
 **Profile** `/user` (Bearer)
-- `GET /me` · `PATCH /profile { userName?, age?, image? }` (image = base64 data url)
+- `GET /me` · `PATCH /profile { userName?, bio?, age?, image? }` (image = base64 data url, bio max 300)
 - `PATCH /password { oldPassword, newPassword }` · `PATCH /email { email }`
+- Google accounts have no password: `PATCH /password` and `POST /action/get-reset-code/:email` refuse them. The user data has `google: true|false`.
 
 **Movies** `/movies`
 - `GET /?search=&genre=` → live + upcoming, plus `serverTime` for the shared clock
 - `GET /:id`
 - Admin: `GET /admin/all`, `POST /`, `PATCH /:id`, `DELETE /:id` (hides it)
   Body: `title, description, genres, duration, price, rating, startTime, poster (url or base64), video (url)`
-- Admin video: `GET /upload-limit` → `{ maxBytes, plan }` from your Cloudinary plan · `POST /upload-video` (multipart `video`) → `{ url, duration }` (seconds). Files over the plan limit are refused before they reach Cloudinary.
+- Admin video: `GET /upload-limit` → `{ maxBytes, plan }` from your Cloudinary plan · `POST /upload-video` (multipart `video`) → `{ url, duration }` (exact seconds, the app rounds up to minutes). Files over the plan limit are refused before they reach Cloudinary.
 
 **Cart** `/cart` (Bearer): `GET /` · `POST /:movieId` · `DELETE /:movieId`
 Checks the age rating (PG / 13+ / 16+ / 18+), ended movies and tickets you already have.

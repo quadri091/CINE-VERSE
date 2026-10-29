@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    number: { type: String, default: "" },
     bio: { type: String, default: "", maxlength: 300 },
     googleSub: {
       type: String,

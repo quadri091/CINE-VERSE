@@ -85,7 +85,7 @@ const enterTicket = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Enjoy the movie 🍿",
+      message: "Enjoy the movie",
       data: {
         movie,
         elapsedSeconds: Math.floor((now - new Date(movie.startTime)) / 1000),

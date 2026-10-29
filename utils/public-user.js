@@ -5,7 +5,6 @@ const publicUser = (user) => ({
   profileImage: user.profileImage,
   role: user.role,
   age: user.age,
-  number: user.number || "",
   bio: user.bio || "",
   verified: user.verified,
   google: !!user.googleSub,
